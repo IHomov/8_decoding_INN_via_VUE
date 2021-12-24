@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inn vs VUE</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<script defer type="module" src="./assets/js/app.js"></script>
+</head>
+
+<body>
+	<div class="container" id="app">
+		<div class="card mx-auto mt-5 p-4 mb-5 bg-light " style="width: 50rem;">
+			<div class="card-body text-start d-flex flex-column  align-items-stretch">
+				<h2 class="card-title">{{title}}</h2>
+				<h5>Введите идентификационный код, всего {{len}} цифр:</h5>
+				<input v-model='inputData' class="form-control mb-2" id="inputData" title="enter 10 numbers"
+					autocomplete="off"
+					oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+					placeholder="Enter only number">
+
+
+				<div class="text-start list-unstyled " v-if='inputData.length == 10'>
+					<p class="fw-bold text-info" v-if="Correct === true">Проверка пройдена! </p>
+					<p class="fw-bold text-danger" v-else="Correct === false">Проверка не пройдена! Проверте свой ИНН! </p>
+					<p class="fw-bold">Знак зодиака: {{Zodiac}} </p>
+					<p class="fw-bold">Дата рождения: {{birthday}} года </p>
+					<p class="fw-bold">Возраст: {{age}} </p>
+					<p class="fw-bold">Пол: {{gender}} </p>
+					<p class="fw-bold">Восточный календарь: {{ chinaCalendar}} </p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
